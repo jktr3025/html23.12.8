@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+            $(".menu > li:nth-child(3)").css({"background":"red"});
+
+            $(".menu").children("li").eq(4).css({                //직계자식만
+                "background":"yellow" , "color":"green" 
+            }); //5번 li가 바뀜
+            $("li").parent(".menu").css({"color":"blue"}); //직계부모만 (parents와 다름)
+            $(".list4").siblings().css({"border" : "1px solid blue"}); //형제들만 (sibling과 다름) 본인은 안 바뀜
+            // 사람은 첫 번째를 1로 세지만, 컴퓨터(eq)는 0으로 센다
+            $(".menu").find(".list1_child").css({"font-size":"25px","color":"white"});  //후손은  find로 찾아준다
+            $(".list1_child").parents(".menu").css({"background":"pink"}) //조상
+            $(".list4").prev().css({"font-size":"20px"}) // 앞의 태그
+            $(".list4").next().css({"font-size":"14px"}) // 뒤의 태그
+        }) //jquery
+    </script>
+</head>
+<body>
+    <ul class="menu">
+        <li>list1
+            <div class="list1_child">sfsklfklkslk</div>
+        </li>
+        <li>list2</li>
+        <li>list3</li>
+        <li class="list4">list4</li>
+        <li>list5</li>
+        <li>list6</li>
+    </ul>
+</body>
+</html>

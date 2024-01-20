@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        // $(document).ready(function(){}) 
+        $(function(){
+            $(".hide").click(function(){
+                // $(".round").hide(1000);
+                // $(".round").css("display","none") //소괄호 표현
+                // $(".round").css({"display":"none"}) //중괄호 표현
+                // $(".round").slideUp(); //높이가 제로로 변하는 과정이 보임
+                $(".round").fadeOut(); //서서히 오파서티가 줄어들면서 0으로 변함
+            }) //hide
+            $(".show").click(function(){
+                // $(".round").show("slow");
+                // $(".round").css("display","block")
+                // $(".round").css({"display":"block","background-color":"purple"}) //2개 이상 속성
+                // $(".round").slideDown();
+                $(".round").fadeIn();
+            }) //show
+            $(".color").click(function(){
+                $(".round").css({"background-color":"red"})
+            }) //color
+            $(".toggle").click(function(){
+                // 두가지 조합이 섞일 때는 붙여써주는데 뒷 단어의 첫번째 알파벳은 대문자!
+                // $(".round").toggle(); //show hide 하나로
+                // $(".round").slideToggle(); //slide의 up down 하나로
+                // $(".round").fadeToggle(); //fade의 in out 하나로
+                $(".round").fadeTo(1000, 0.5); //오파서티를 내가 지정한 값까지 천천히 주는 효과 
+            }) //toggle
+            $(".left").click(function(){
+                // $(".box").css({"left":"100px"})
+                // $(".box").animate({"left":"+=100px"})
+                $(".box").animate({"left":"+=100px" ,"background":"pink"} ,1000);
+                // $(".box").animate({"left":"+=100px"}).animate({"background":"red"});
+                // 여러 명령을 따로 따로 줄 수도 합쳐서 줄 수도 있는데 결과는 미세하게 다음
+            }) //left
+            //스타일로 포지션을 먼저 줘야 방향 명령어를 줄 수 있음
+            // css로주면 포지션만 이동하는데 animate를 주면 이동하는 과정을 볼 수 있음
+            //"left":"100px"만 주면 버튼 누르면 1번만 이동하고 끝인데
+             // 100px 앞에 +- 누를 떄마다 마지막 위치에서 100px를 더 가는 효과가 보임
+            $(".right").click(function(){
+                $(".box").animate({"left":"-=100px"} ,1000);
+                // right 눌렀을 때 -100px 위치를 바뀔떄는 
+                // 스타일에서 left와 top으로만 명령을 걸었기 떄문에 
+                //  그 두가지를 기준으로 +나 -를 사용해서 움직여야한다 
+            }) // right
+            $(".top").click(function(){
+                $(".box").animate({"top":"-=100px"} ,1000);
+            }) // top
+            $(".bottom").click(function(){
+                $(".box").animate({"top":"+=100px"} ,1000);
+            }) // bottom
+        }) //jquery
+    </script>
+
+    <style type="text/css">
+        body{
+            background: beige;
+            margin: 20px;
+            padding: 20px;
+        }
+        .wrap{
+
+        }
+        .wrap h1{}
+        .wrap button{}
+        .wrap .round{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: pink;
+            margin: 30px 0;
+        }
+        .ani{
+            margin-top: 20px;
+            width: 1000px;
+            height: 500px;
+            border: 1px solid chocolate;
+            position: relative;
+            overflow: hidden;
+        }
+        .box{
+            width: 70px;
+            height:70px;
+            border-radius: 50%;
+            background: darkblue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        button{
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>header</h1>
+        <button class="hide">hide</button>
+        <button class="show">show</button>
+        <button class="color">color</button>
+        <button class="toggle">toggle</button>
+        <div class="round"></div>
+    </div><!-- wrap -->
+
+    <div class="btn_group">
+        <button class="left">left</button>
+        <button class="right">right</button>
+        <button class="top">top</button>
+        <button class="bottom">bottom</button>
+    </div><!-- btn_group -->
+
+    <div class="ani">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
